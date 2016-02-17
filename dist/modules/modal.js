@@ -1,6 +1,6 @@
 /**
  * angular-strap
- * @version v2.3.7 - 2016-01-16
+ * @version v2.3.7 - 2016-02-17
  * @link http://mgcrea.github.io/angular-strap
  * @author Olivier Louvignes <olivier@mg-crea.com> (https://github.com/mgcrea)
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -92,6 +92,7 @@ angular.module('mgcrea.ngStrap.modal', [ 'mgcrea.ngStrap.core', 'mgcrea.ngStrap.
       };
       $modal.show = function() {
         if ($modal.$isShown) return;
+        $rootScope.$emit('modal_fired', $modal.$isShown);
         var parent;
         var after;
         if (angular.isElement(options.container)) {
@@ -159,6 +160,7 @@ angular.module('mgcrea.ngStrap.modal', [ 'mgcrea.ngStrap.core', 'mgcrea.ngStrap.
       }
       $modal.hide = function() {
         if (!$modal.$isShown) return;
+        $rootScope.$emit('modal_fired', $modal.$isShown);
         if (options.backdrop) {
           backdropCount--;
         }
