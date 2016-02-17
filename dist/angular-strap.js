@@ -2137,6 +2137,7 @@
         };
         $modal.show = function() {
           if ($modal.$isShown) return;
+          $rootScope.$emit('modal_fired', $modal.$isShown);
           var parent;
           var after;
           if (angular.isElement(options.container)) {
@@ -2204,6 +2205,7 @@
         }
         $modal.hide = function() {
           if (!$modal.$isShown) return;
+          $rootScope.$emit('modal_fired', $modal.$isShown);
           if (options.backdrop) {
             backdropCount--;
           }
